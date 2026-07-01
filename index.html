@@ -1,0 +1,1338 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Le Balcon de Tanger | Hotel face a la mer</title>
+    <meta
+      name="description"
+      content="Le Balcon de Tanger est un hotel face a la mer a Tanger avec chambres elegantes, piscine luxe, terrasse panoramique et reservation directe WhatsApp."
+    />
+    <meta name="theme-color" content="#075468" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Le Balcon de Tanger | Hotel face a la mer" />
+    <meta property="og:description" content="Chambres premium, piscine, balcon panoramique et sejour estival a Tanger." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/optimized/view.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%23fffdf8"/><rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="%23c49b4f" stroke-width="3"/><path d="M16 35c5-2.8 10-2.8 15 0s10 2.8 15 0" fill="none" stroke="%230b7e94" stroke-width="5" stroke-linecap="round"/><path d="M13 44c6-3 12-3 18 0s12 3 20 0v12H13z" fill="%23075468"/><path d="M20 28a14 14 0 0 1 24 0" fill="none" stroke="%23c49b4f" stroke-width="5" stroke-linecap="round"/></svg>'
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "Le Balcon de Tanger",
+        "description": "Hotel face a la mer a Tanger avec chambres elegantes, piscine luxe et balcon panoramique.",
+        "address": { "@type": "PostalAddress", "addressLocality": "Tanger", "addressCountry": "MA" },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Piscine", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Vue mer", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Reservation WhatsApp", "value": true }
+        ],
+        "priceRange": "874-2130 DH"
+      }
+    </script>
+    <style>
+      :root {
+        --ink: #172d35;
+        --muted: #607178;
+        --sea: #0b7e94;
+        --deep-sea: #075468;
+        --white: #fffdf8;
+        --gold: #c49b4f;
+        --line: rgba(23, 45, 53, 0.14);
+        --shadow: 0 22px 70px rgba(23, 45, 53, 0.14);
+        --ease: cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--ink);
+        background: var(--white);
+        font-family: Inter, Arial, sans-serif;
+      }
+
+      img,
+      video {
+        display: block;
+        width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(255, 253, 248, 0.98), rgba(223, 246, 248, 0.96));
+        transition: opacity 800ms var(--ease), visibility 800ms var(--ease);
+      }
+
+      .preloader.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .preloader-mark {
+        display: grid;
+        place-items: center;
+        width: 82px;
+        height: 82px;
+        color: var(--ink);
+        border: 1px solid rgba(196, 155, 79, 0.5);
+        border-radius: 8px;
+        background: linear-gradient(135deg, rgba(255, 246, 215, 0.95), rgba(196, 155, 79, 0.84));
+        box-shadow: 0 30px 90px rgba(23, 45, 53, 0.16);
+        font-family: Georgia, serif;
+        font-size: 28px;
+        font-weight: 800;
+        animation: markFloat 2200ms var(--ease) infinite alternate;
+      }
+
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 101;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--sea), var(--gold));
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        height: 42px;
+        color: #5c4625;
+        background: rgba(255, 253, 248, 0.9);
+        border-bottom: 1px solid rgba(196, 155, 79, 0.28);
+        backdrop-filter: blur(14px);
+        font-size: 13px;
+        transform: translateY(-100%);
+        animation: slideDown 900ms var(--ease) 500ms forwards;
+      }
+
+      .topbar img {
+        width: 28px;
+        height: 28px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .site-header {
+        position: fixed;
+        top: 42px;
+        z-index: 50;
+        width: 100%;
+        padding: 14px clamp(18px, 4vw, 54px);
+        transform: translateY(-118%);
+        animation: slideDown 950ms var(--ease) 650ms forwards;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 12px 14px;
+        color: var(--white);
+        background: rgba(255, 253, 248, 0.08);
+        border: 1px solid rgba(255, 253, 248, 0.28);
+        border-radius: 8px;
+        backdrop-filter: blur(22px) saturate(1.2);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+        transition: padding 500ms var(--ease), background 500ms var(--ease), color 500ms var(--ease), box-shadow 500ms var(--ease);
+      }
+
+      .site-header.is-scrolled .navbar {
+        padding-block: 9px;
+        color: var(--ink);
+        background: rgba(255, 253, 248, 0.88);
+        box-shadow: 0 18px 56px rgba(23, 45, 53, 0.13);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 188px;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        color: var(--ink);
+        background: linear-gradient(135deg, #fff6d7, var(--gold));
+        border-radius: 8px;
+        font-family: Georgia, serif;
+        font-weight: 800;
+        transition: transform 450ms var(--ease), box-shadow 450ms var(--ease);
+      }
+
+      .brand:hover .brand-mark {
+        transform: translateY(-2px) rotate(-2deg);
+        box-shadow: 0 14px 28px rgba(196, 155, 79, 0.25);
+      }
+
+      .brand strong,
+      .brand small {
+        display: block;
+        line-height: 1.05;
+      }
+
+      .brand small {
+        opacity: 0.78;
+        font-size: 12px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding: 10px 12px;
+        border-radius: 6px;
+        overflow: hidden;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        right: 12px;
+        bottom: 7px;
+        left: 12px;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 420ms var(--ease);
+      }
+
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(255, 253, 248, 0.36);
+        border-radius: 8px;
+        background: transparent;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        margin: 5px auto;
+        background: var(--white);
+      }
+
+      .site-header.is-scrolled .menu-toggle span {
+        background: var(--ink);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 92svh;
+        overflow: hidden;
+        color: var(--white);
+      }
+
+      .hero-video,
+      .hero-shade {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-video {
+        transform: scale(1.04);
+        animation: heroDrift 18s ease-in-out infinite alternate;
+      }
+
+      .hero-shade {
+        background: linear-gradient(90deg, rgba(7, 41, 51, 0.78), rgba(7, 41, 51, 0.22) 52%, rgba(7, 41, 51, 0.58)),
+          linear-gradient(0deg, rgba(23, 45, 53, 0.45), rgba(23, 45, 53, 0.05));
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        padding: clamp(190px, 22vh, 260px) clamp(22px, 7vw, 96px) 130px;
+      }
+
+      .hero-content .eyebrow,
+      .hero-content h1,
+      .hero-content p,
+      .hero-actions {
+        opacity: 0;
+        transform: translateY(28px);
+        animation: heroRise 1100ms var(--ease) forwards;
+      }
+
+      .hero-content .eyebrow {
+        animation-delay: 720ms;
+      }
+
+      .hero-content h1 {
+        animation-delay: 860ms;
+      }
+
+      .hero-content p {
+        animation-delay: 1040ms;
+      }
+
+      .hero-actions {
+        animation-delay: 1220ms;
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        line-height: 1.02;
+      }
+
+      h1 {
+        max-width: 720px;
+        font-size: 96px;
+      }
+
+      h2 {
+        font-size: 58px;
+      }
+
+      h3 {
+        font-size: 25px;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .hero p {
+        max-width: 620px;
+        color: rgba(255, 253, 248, 0.88);
+        font-size: 21px;
+      }
+
+      .hero-actions,
+      .price-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .primary-btn,
+      .ghost-btn,
+      .submit-btn,
+      .price-row button {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        font: inherit;
+        font-weight: 900;
+        cursor: pointer;
+        transition: transform 420ms var(--ease), box-shadow 420ms var(--ease);
+      }
+
+      .primary-btn,
+      .submit-btn,
+      .price-row button {
+        color: var(--ink);
+        background: linear-gradient(135deg, #ffe9a7, var(--gold));
+        box-shadow: 0 16px 36px rgba(108, 75, 20, 0.18);
+      }
+
+      .primary-btn::after,
+      .submit-btn::after,
+      .price-row button::after {
+        content: "";
+        position: absolute;
+        inset: -40% auto -40% -80%;
+        width: 56%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.54), transparent);
+        transform: skewX(-18deg);
+        transition: left 800ms var(--ease);
+      }
+
+      .primary-btn:hover,
+      .ghost-btn:hover,
+      .submit-btn:hover,
+      .price-row button:hover {
+        transform: translateY(-3px);
+      }
+
+      .primary-btn:hover::after,
+      .submit-btn:hover::after,
+      .price-row button:hover::after {
+        left: 130%;
+      }
+
+      .ghost-btn {
+        color: var(--white);
+        border: 1px solid rgba(255, 253, 248, 0.58);
+        background: rgba(255, 253, 248, 0.1);
+      }
+
+      .hero-panel {
+        position: absolute;
+        right: clamp(20px, 5vw, 70px);
+        bottom: 42px;
+        z-index: 1;
+        width: min(360px, calc(100% - 40px));
+        padding: 22px;
+        border: 1px solid rgba(255, 253, 248, 0.28);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.14);
+        backdrop-filter: blur(18px);
+        opacity: 0;
+        transform: translateY(26px);
+        animation: heroRise 1000ms var(--ease) 1350ms forwards;
+      }
+
+      .hero-panel span,
+      .hero-panel small {
+        display: block;
+        color: rgba(255, 253, 248, 0.78);
+      }
+
+      .hero-panel strong {
+        display: block;
+        margin: 5px 0;
+        color: var(--white);
+        font-size: 26px;
+      }
+
+      .scroll-cue {
+        position: absolute;
+        bottom: 34px;
+        left: clamp(22px, 7vw, 96px);
+        z-index: 2;
+        width: 26px;
+        height: 44px;
+        border: 1px solid rgba(255, 253, 248, 0.56);
+        border-radius: 999px;
+        opacity: 0;
+        animation: fadeIn 900ms ease 1700ms forwards;
+      }
+
+      .scroll-cue span {
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--gold);
+        transform: translateX(-50%);
+        animation: scrollDot 1700ms ease-in-out infinite;
+      }
+
+      .section-band,
+      .booking {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: clamp(28px, 5vw, 72px);
+        align-items: center;
+        padding: clamp(70px, 9vw, 120px) clamp(22px, 6vw, 90px);
+      }
+
+      .section-band::before,
+      .booking::before {
+        content: "";
+        position: absolute;
+        top: 36px;
+        right: clamp(22px, 6vw, 90px);
+        left: clamp(22px, 6vw, 90px);
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(196, 155, 79, 0.42), transparent);
+      }
+
+      .section-band.light {
+        background: linear-gradient(180deg, #f8fbf8, #eef8f7);
+      }
+
+      .section-copy {
+        max-width: 620px;
+      }
+
+      .section-copy p {
+        font-size: 17px;
+      }
+
+      .split-media {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      .split-media img {
+        aspect-ratio: 4 / 5;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        transform: scale(1.012);
+        transition: transform 1300ms var(--ease), filter 800ms ease;
+      }
+
+      .split-media.wide img {
+        aspect-ratio: 16 / 11;
+      }
+
+      .split-media:hover img {
+        transform: scale(1.06);
+        filter: saturate(1.05) contrast(1.02);
+      }
+
+      .reviews {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      blockquote {
+        margin: 0;
+        padding: 18px;
+        border-left: 4px solid var(--gold);
+        border-radius: 8px;
+        background: var(--white);
+        transition: transform 450ms var(--ease), box-shadow 450ms var(--ease);
+      }
+
+      blockquote:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 44px rgba(23, 45, 53, 0.1);
+      }
+
+      blockquote strong,
+      blockquote span {
+        display: block;
+      }
+
+      blockquote span {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .rooms {
+        padding: clamp(70px, 9vw, 120px) clamp(18px, 5vw, 70px);
+        background: var(--white);
+      }
+
+      .section-heading {
+        max-width: 820px;
+        margin: 0 auto 42px;
+        text-align: center;
+      }
+
+      .section-heading p:last-child {
+        max-width: 580px;
+        margin-inline: auto;
+      }
+
+      .room-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .room-card {
+        position: relative;
+        display: grid;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 18px 45px rgba(23, 45, 53, 0.09);
+        transform: translateZ(0);
+        transition: transform 700ms var(--ease), box-shadow 700ms var(--ease), border-color 700ms var(--ease);
+      }
+
+      .room-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: linear-gradient(115deg, transparent 0%, transparent 32%, rgba(255, 255, 255, 0.34) 45%, transparent 58%),
+          linear-gradient(180deg, rgba(196, 155, 79, 0.12), transparent 40%);
+        opacity: 0;
+        transform: translateX(-55%);
+        transition: opacity 500ms var(--ease), transform 1100ms var(--ease);
+      }
+
+      .room-card::after {
+        content: "Le Balcon";
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        z-index: 3;
+        padding: 8px 11px;
+        color: var(--white);
+        border: 1px solid rgba(255, 253, 248, 0.4);
+        border-radius: 8px;
+        background: rgba(7, 84, 104, 0.42);
+        backdrop-filter: blur(12px);
+        font-size: 11px;
+        font-weight: 900;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 520ms var(--ease), transform 520ms var(--ease);
+      }
+
+      .room-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(196, 155, 79, 0.45);
+        box-shadow: 0 34px 90px rgba(23, 45, 53, 0.18);
+      }
+
+      .room-card:hover::before {
+        opacity: 1;
+        transform: translateX(55%);
+      }
+
+      .room-card:hover::after {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .room-card img {
+        height: 360px;
+        object-fit: cover;
+        transition: transform 1100ms var(--ease);
+      }
+
+      .room-card:hover img {
+        transform: scale(1.07) translateY(-6px);
+      }
+
+      .room-info {
+        display: grid;
+        gap: 18px;
+        padding: 22px;
+      }
+
+      .room-info p {
+        margin: 10px 0 0;
+      }
+
+      .room-info ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+      }
+
+      .room-info li::before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-right: 9px;
+        border-radius: 50%;
+        background: var(--sea);
+        transform: translateY(-1px);
+      }
+
+      .price-row {
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .price-row strong {
+        color: var(--deep-sea);
+        font-size: 24px;
+      }
+
+      .pool {
+        position: relative;
+        min-height: 76svh;
+        overflow: hidden;
+        color: var(--white);
+      }
+
+      .pool video {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.04);
+      }
+
+      .pool::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(4, 39, 54, 0.76), rgba(4, 39, 54, 0.18));
+      }
+
+      .pool-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        padding: clamp(110px, 15vw, 180px) clamp(22px, 7vw, 96px);
+      }
+
+      .pool-copy::before {
+        content: "";
+        display: block;
+        width: 84px;
+        height: 1px;
+        margin-bottom: 26px;
+        background: var(--gold);
+      }
+
+      .pool-copy p {
+        color: rgba(255, 253, 248, 0.88);
+        font-size: 18px;
+      }
+
+      .booking {
+        align-items: start;
+        background: linear-gradient(90deg, rgba(255, 253, 248, 0.94), rgba(255, 253, 248, 0.82)), url("assets/optimized/view.webp") center / cover;
+      }
+
+      .booking-copy {
+        position: sticky;
+        top: 140px;
+        max-width: 540px;
+      }
+
+      .booking-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        padding: clamp(20px, 4vw, 34px);
+        border: 1px solid rgba(196, 155, 79, 0.26);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.92);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+        transition: transform 700ms var(--ease), box-shadow 700ms var(--ease);
+      }
+
+      .booking-form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 34px 96px rgba(23, 45, 53, 0.18);
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 13px;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        font: inherit;
+        transition: border-color 260ms ease, box-shadow 260ms ease, transform 260ms ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: rgba(11, 126, 148, 0.58);
+        box-shadow: 0 0 0 4px rgba(11, 126, 148, 0.12);
+        transform: translateY(-1px);
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .submit-btn {
+        width: 100%;
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 30px clamp(22px, 6vw, 90px);
+        color: var(--white);
+        background: var(--ink);
+      }
+
+      footer strong,
+      footer span {
+        display: block;
+      }
+
+      footer span {
+        margin-top: 5px;
+        color: rgba(255, 253, 248, 0.68);
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(42px);
+        transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      [data-reveal="image"] {
+        transform: translateY(36px) scale(0.985);
+      }
+
+      [data-reveal="image"].is-visible {
+        transform: translateY(0) scale(1);
+      }
+
+      @keyframes slideDown {
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes heroRise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes heroDrift {
+        from {
+          transform: scale(1.04) translate3d(-1.2%, -0.8%, 0);
+        }
+        to {
+          transform: scale(1.08) translate3d(1.2%, 0.8%, 0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes scrollDot {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, 0);
+        }
+        28% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, 22px);
+        }
+      }
+
+      @keyframes markFloat {
+        to {
+          transform: translateY(-8px);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: calc(100% + 10px);
+          right: 0;
+          left: 0;
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+          padding: 10px;
+          color: var(--ink);
+          background: rgba(255, 253, 248, 0.96);
+          border-radius: 8px;
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .section-band,
+        .booking {
+          grid-template-columns: 1fr;
+        }
+
+        .experience .split-media,
+        .view .split-media {
+          order: 2;
+        }
+
+        .room-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .room-card {
+          grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1fr);
+        }
+
+        .room-card img {
+          height: 100%;
+          min-height: 330px;
+        }
+
+        .booking-copy {
+          position: static;
+        }
+
+        h1 {
+          font-size: 72px;
+        }
+
+        h2 {
+          font-size: 46px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          justify-content: flex-start;
+          padding: 0 14px;
+        }
+
+        .site-header {
+          padding-inline: 12px;
+        }
+
+        .brand {
+          min-width: 0;
+        }
+
+        .hero {
+          min-height: 96svh;
+        }
+
+        .hero-content {
+          padding: 170px 20px 220px;
+        }
+
+        h1 {
+          font-size: 52px;
+        }
+
+        h2 {
+          font-size: 36px;
+        }
+
+        h3 {
+          font-size: 23px;
+        }
+
+        .hero p {
+          font-size: 17px;
+        }
+
+        .hero-actions a {
+          width: 100%;
+        }
+
+        .hero-panel {
+          right: 20px;
+          bottom: 24px;
+        }
+
+        .reviews,
+        .booking-form,
+        .room-card {
+          grid-template-columns: 1fr;
+        }
+
+        .room-card img {
+          height: 330px;
+        }
+
+        .section-band,
+        .booking,
+        .rooms {
+          padding-inline: 18px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+
+        .preloader {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preloader" aria-hidden="true"><div class="preloader-mark">LB</div></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <div class="topbar">
+      <span>Presented by</span>
+      <img src="assets/optimized/logo-2.webp" alt="Hkaya Hospitality Marketing" width="28" height="28" />
+      <strong>HKAYA Marketing</strong>
+    </div>
+
+    <header class="site-header" id="top">
+      <nav class="navbar" aria-label="Navigation principale">
+        <a class="brand" href="#top" aria-label="Le Balcon de Tanger">
+          <span class="brand-mark">LB</span>
+          <span><strong>Le Balcon</strong><small>de Tanger</small></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+        <div class="nav-links">
+          <a href="#tanger">Tanger</a>
+          <a href="#rooms">Chambres</a>
+          <a href="#pool">Piscine</a>
+          <a href="#view">Vue</a>
+          <a href="#booking">Reservation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <video class="hero-video" data-src="assets/HERO.mp4" poster="assets/optimized/hero-poster.webp" autoplay muted loop playsinline preload="none"></video>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Hotel face a la mer - Tanger</p>
+          <h1>Le Balcon de Tanger</h1>
+          <p>Une adresse solaire, calme et elegante ou le blanc, le bleu marin et l'or se rencontrent devant la Mediterranee.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#booking">Reserver maintenant</a>
+            <a class="ghost-btn" href="#rooms">Voir les chambres</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <span>Sea view</span>
+          <strong>Balcon panoramique</strong>
+          <small>Petit-dejeuner, piscine et chambres premium</small>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span></span></div>
+      </section>
+
+      <section class="intro section-band" id="tanger">
+        <div class="section-copy">
+          <p class="eyebrow">Tanger, ville de lumiere</p>
+          <h2>Entre la medina blanche, la mer bleue et l'ambiance d'ete.</h2>
+          <p>Tanger katjma3 bin l'histoire, les ruelles pleines de couleurs, l'air marin et une energie internationale. Depuis Le Balcon de Tanger, la ville se vit doucement: matin face a la mer, balade dans la medina, puis sunset sur la terrasse.</p>
+        </div>
+        <figure class="split-media"><img src="assets/optimized/tanger.webp" alt="Ruelle fleurie dans la medina de Tanger" width="1100" height="1650" loading="lazy" decoding="async" /></figure>
+      </section>
+
+      <section class="experience section-band light">
+        <figure class="split-media wide"><img src="assets/optimized/experience.webp" alt="Experience estivale dans une eau claire" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+        <div class="section-copy">
+          <p class="eyebrow">Experience client</p>
+          <h2>Des moments simples, propres et luxueux.</h2>
+          <p>Ici, l'experience est pensee pour les voyageurs qui veulent respirer: chambres calmes, service attentif, petit-dejeuner soigne, piscine fraiche et coins parfaits pour photos, repos ou travail leger.</p>
+          <div class="reviews">
+            <blockquote><strong>"Vue incroyable."</strong><span>Terrasse propre, staff souriant, et l'ambiance de la mer partout.</span></blockquote>
+            <blockquote><strong>"Tres bon sejour."</strong><span>Chambre confortable, piscine chic, et reservation tres facile.</span></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="rooms" id="rooms">
+        <div class="section-heading">
+          <p class="eyebrow">Nos chambres</p>
+          <h2>Choisissez votre confort</h2>
+          <p>Chaque chambre garde le style blanc, bleu et dore du hotel avec des details pratiques.</p>
+        </div>
+        <div class="room-grid">
+          <article class="room-card">
+            <img src="assets/optimized/room.webp" alt="Room 1 avec lit double et decoration elegante" width="900" height="1599" loading="lazy" decoding="async" />
+            <div class="room-info">
+              <div><h3>Room 1 - Double Premium</h3><p>Lit king, ambiance calme, bureau, climatisation et linge blanc premium.</p></div>
+              <ul><li>Ideal couple</li><li>Wifi haut debit</li><li>Petit coin travail</li></ul>
+              <div class="price-row"><strong>874 DH</strong><button type="button" data-room="Room 1 - Double Premium" data-price="874 DH">Reserver</button></div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="assets/optimized/room2.webp" alt="Room 2 avec deux lits et lumiere naturelle" width="900" height="1599" loading="lazy" decoding="async" />
+            <div class="room-info">
+              <div><h3>Room 2 - Twin Comfort</h3><p>Deux lits separes, grande fenetre, rideaux occultants et atmosphere douce.</p></div>
+              <ul><li>Pour amis ou collegues</li><li>Climatisation</li><li>Design clair</li></ul>
+              <div class="price-row"><strong>922 DH</strong><button type="button" data-room="Room 2 - Twin Comfort" data-price="922 DH">Reserver</button></div>
+            </div>
+          </article>
+
+          <article class="room-card family">
+            <img src="assets/optimized/room3.webp" alt="Chambre familiale spacieuse" width="1100" height="619" loading="lazy" decoding="async" />
+            <div class="room-info">
+              <div><h3>Chambre Familiale</h3><p>Grand espace, coin bureau, rangements, confort familial et nuit tranquille.</p></div>
+              <ul><li>Famille ou long sejour</li><li>Espace plus large</li><li>Equipements complets</li></ul>
+              <div class="price-row"><strong>2130 DH</strong><button type="button" data-room="Chambre Familiale" data-price="2130 DH">Reserver</button></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="amenity section-band light">
+        <div class="section-copy">
+          <p class="eyebrow">Salle de bain</p>
+          <h2>Shower class, marble look et lumiere chaude.</h2>
+          <p>La douche garde une finition propre et luxe: glass shower, effet marbre, niche lumineuse et details chromes. Un espace qui donne une vraie sensation premium apres la plage.</p>
+        </div>
+        <figure class="split-media"><img src="assets/optimized/shower2.webp" alt="Salle de bain marbre avec douche vitree" width="1200" height="675" loading="lazy" decoding="async" /></figure>
+      </section>
+
+      <section class="pool" id="pool">
+        <video data-src="assets/piscine.mp4" poster="assets/optimized/pool-poster.webp" autoplay muted loop playsinline preload="none"></video>
+        <div class="pool-copy">
+          <p class="eyebrow">Piscine</p>
+          <h2>Un coin bleu, luxe et tres relax.</h2>
+          <p>La piscine est faite pour les longues journees d'ete: eau claire, ambiance calme, service elegant et moments parfaits pour se detendre sans quitter l'hotel.</p>
+        </div>
+      </section>
+
+      <section class="view section-band" id="view">
+        <figure class="split-media wide"><img src="assets/optimized/view.webp" alt="Balcon avec vue directe sur la mer" width="1200" height="1500" loading="lazy" decoding="async" /></figure>
+        <div class="section-copy">
+          <p class="eyebrow">Le balcon</p>
+          <h2>La vue qui fait toute la difference.</h2>
+          <p>Darori tchouf l view: depuis le balcon, la mer est juste devant vous. C'est l'endroit parfait pour cafe du matin, appels tranquilles, sunset, ou pause fraiche apres une journee a Tanger.</p>
+        </div>
+      </section>
+
+      <section class="dining section-band light">
+        <div class="section-copy">
+          <p class="eyebrow">Gout & service</p>
+          <h2>Petit-dejeuner et pauses soignees.</h2>
+          <p>Les tables sont preparees avec une touche marocaine moderne: fruits, mini bouchees, douceurs et presentation elegante pour commencer la journee avec gout.</p>
+        </div>
+        <figure class="split-media"><img src="assets/optimized/food1.webp" alt="Buffet elegant avec fruits et mini bouchees" width="1000" height="1250" loading="lazy" decoding="async" /></figure>
+      </section>
+
+      <section class="booking" id="booking">
+        <div class="booking-copy">
+          <p class="eyebrow">Reservation WhatsApp</p>
+          <h2>Remplissez vos informations, on prepare le message.</h2>
+          <p>Remplissez la demande et cliquez sur WhatsApp. Le message part avec les dates, la chambre, le nombre de personnes et vos remarques.</p>
+        </div>
+        <form class="booking-form">
+          <label>Nom complet<input name="name" type="text" placeholder="Votre nom" required /></label>
+          <label>Telephone<input name="phone" type="tel" placeholder="+212 ..." required /></label>
+          <label>Chambre<select name="room" required><option value="">Choisir une chambre</option><option value="Room 1 - Double Premium | 874 DH">Room 1 - 874 DH</option><option value="Room 2 - Twin Comfort | 922 DH">Room 2 - 922 DH</option><option value="Chambre Familiale | 2130 DH">Chambre Familiale - 2130 DH</option></select></label>
+          <label>Arrivee<input name="checkin" type="date" required /></label>
+          <label>Depart<input name="checkout" type="date" required /></label>
+          <label>Personnes<input name="guests" type="number" min="1" max="8" value="2" required /></label>
+          <label class="full">Message<textarea name="message" rows="4" placeholder="Ex: balcon, vue mer, petit-dejeuner..."></textarea></label>
+          <button class="submit-btn full" type="submit">Envoyer sur WhatsApp</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div><strong>Le Balcon de Tanger</strong><span>Face a la mer - Tanger</span></div>
+      <a href="#top">Retour en haut</a>
+    </footer>
+
+    <script>
+      const HOTEL_WHATSAPP_NUMBER = "";
+      document.documentElement.classList.add("js-ready");
+
+      const menuButton = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      const header = document.querySelector(".site-header");
+      const progress = document.querySelector(".scroll-progress");
+      const preloader = document.querySelector(".preloader");
+      const poolSection = document.querySelector(".pool");
+      const poolVideo = document.querySelector(".pool video");
+      const heroVideo = document.querySelector(".hero-video");
+
+      const activateVideo = (video) => {
+        if (!video || video.src || !video.dataset.src) return;
+        video.src = video.dataset.src;
+        video.load();
+        const playPromise = video.play();
+        if (playPromise) playPromise.catch(() => {});
+      };
+
+      window.addEventListener("load", () => {
+        window.setTimeout(() => preloader?.classList.add("is-hidden"), 450);
+        window.setTimeout(() => activateVideo(heroVideo), 900);
+      });
+
+      const revealTargets = [
+        ...document.querySelectorAll(".section-copy, .split-media, .section-heading, .room-card, .pool-copy, .booking-form, blockquote"),
+      ];
+
+      revealTargets.forEach((element, index) => {
+        element.dataset.reveal = element.classList.contains("split-media") ? "image" : "content";
+        element.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 90}ms`);
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      revealTargets.forEach((element) => revealObserver.observe(element));
+
+      if (poolVideo && poolSection) {
+        const videoObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                activateVideo(poolVideo);
+                videoObserver.disconnect();
+              }
+            });
+          },
+          { rootMargin: "280px 0px" }
+        );
+        videoObserver.observe(poolSection);
+      }
+
+      const updateScrollEffects = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progressValue = scrollable > 0 ? (scrollTop / scrollable) * 100 : 0;
+        if (progress) progress.style.width = `${progressValue}%`;
+        header?.classList.toggle("is-scrolled", scrollTop > 40);
+        if (poolVideo && poolSection) {
+          const poolTop = poolSection.getBoundingClientRect().top;
+          const offset = Math.max(Math.min(poolTop * -0.03, 28), -28);
+          poolVideo.style.transform = `scale(1.04) translateY(${offset}px)`;
+        }
+      };
+
+      window.addEventListener("scroll", updateScrollEffects, { passive: true });
+      updateScrollEffects();
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuButton.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.querySelectorAll("[data-room]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const select = document.querySelector('select[name="room"]');
+          select.value = `${button.dataset.room} | ${button.dataset.price}`;
+          document.querySelector("#booking").scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      document.querySelector(".booking-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const lines = [
+          "Salam Le Balcon de Tanger, bghit nreservi:",
+          `Nom: ${form.get("name")}`,
+          `Telephone: ${form.get("phone")}`,
+          `Chambre: ${form.get("room")}`,
+          `Arrivee: ${form.get("checkin")}`,
+          `Depart: ${form.get("checkout")}`,
+          `Personnes: ${form.get("guests")}`,
+          `Message: ${form.get("message") || "Aucune remarque"}`,
+        ];
+        const message = encodeURIComponent(lines.join("\n"));
+        const url = HOTEL_WHATSAPP_NUMBER ? `https://wa.me/${HOTEL_WHATSAPP_NUMBER}?text=${message}` : `https://api.whatsapp.com/send?text=${message}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+    </script>
+  </body>
+</html>
